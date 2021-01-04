@@ -49,11 +49,11 @@ def index():
 def login():
     """Login to vmanage"""
     session = {}
-    
+
     global username
     global password
     global vmanage_ip
-    
+
     username = request.form['uname']
     password = request.form['pwd']
     vmanage_ip = request.form['ip']
@@ -84,7 +84,7 @@ def login():
         elif '<html>' in login_response.content:
             flash("Login Failed!! Please try again", 'danger')
             return render_template('login.html')
-            print "Login Failed"
+            print("Login Failed")
             sys.exit(0)
         else:
             print("Unknown exception")
@@ -108,7 +108,7 @@ def listvsmartpolicies():
     for i in range(policyJson["data"].__len__()):
         policyName = policyJson.get("data")[i].get("policyName"), policyJson.get("data")[i].get("policyId"), policyJson.get("data")[i].get("isPolicyActivated")
         policy_list.append(policyName)
-    print policy_list
+    print(policy_list)
     return policy_list
 
 
